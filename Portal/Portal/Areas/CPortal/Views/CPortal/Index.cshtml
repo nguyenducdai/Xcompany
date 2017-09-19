@@ -4,91 +4,65 @@
     Layout = "~/Views/Shared/_LayoutCportal.cshtml";
 }
 @(Html.DevExtreme().DataGrid()
-    .Columns(columns =>
-    {
-        //columns.Add()
-        //    .DataField("CustomerID")
-        //    .Caption("Customer")
-        //    .Lookup(lookup => lookup
-        //        .DataSource(d => d.WebApi().Controller("DataGridWebApi").LoadAction("CustomersLookup").Key("Value"))
-        //        .ValueExpr("Value")
-        //        .DisplayExpr("Text")
-        //    );
-
-        columns.Add()
-            .DataField("OrderDate")
-            .DataType(GridColumnDataType.Date);
-
-        columns.Add()
-            .DataField("Freight")
-            .HeaderFilter(f => f.GroupInterval(100));
-
-        columns.Add()
-            .DataField("ShipCountry");
-
-        columns.Add()
-            .DataField("ShipRegion");
-
-        //columns.Add()
-        //    .DataField("ShipVia")
-        //    .Caption("Shipping Company")
-        //    .Lookup(lookup => lookup
-        //        .DataSource(d => d.WebApi().Controller("DataGridWebApi").LoadAction("ShippersLookup").Key("Value"))
-        //        .ValueExpr("Value")
-        //        .DisplayExpr("Text")
-        //    );
-
-    })
-    .DataSource(d => d.WebApi().Controller("MenusAPI").Key("Id"))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .GroupPanel(p => p.Visible(true))
-    .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
-    .Height(600)
-    .ShowBorders(true)
-    .MasterDetail(md => md
-        .Enabled(true)
-        .Template(@<text>
-
-        @(Html.DevExtreme().DataGrid()
-                .DataSource(d => d.WebApi()
-                    .Controller("MenusAPI")
-                    .LoadAction("GetMenus")
-                    .LoadParams(new { Id = new JS("data.Id") })
-                )
+        .ID("id")
+        .FilterRow(filterRow => filterRow
+            .Visible(true)
+            .ApplyFilter(GridApplyFilterMode.Auto)
         )
-
-        </text>)
-    )
-    .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
-    .RemoteOperations(true)
-    .Grouping(g => g.AutoExpandAll(false))
-    .Summary(s => s
-        .TotalItems(totalItems =>
+        .SearchPanel(searchPanel => searchPanel
+            .Visible(true)
+            .Width(240)
+            .Placeholder("Search...")
+        )
+        .HeaderFilter(headerFilter => headerFilter.Visible(true))
+        .ShowBorders(true)
+        .Editing(editing =>
         {
-            totalItems.Add().Column("Freight").SummaryType(SummaryType.Sum);
+            editing.Mode(GridEditMode.Row);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
+            editing.AllowUpdating(true);
         })
-        .GroupItems(groupItems =>
-        {
-            groupItems.Add().Column("Freight").SummaryType(SummaryType.Sum);
-            groupItems.Add().SummaryType(SummaryType.Count);
-        })
+        .Selection(s => s.Mode(SelectionMode.Multiple)
     )
+    .AllowColumnReordering(true)
+    .AllowColumnResizing(true)
+     .ColumnAutoWidth(true)
+    .ColumnChooser(c => c.Enabled(true))
+    .ColumnFixing(c => c.Enabled(true))
+    .Export(e => e
+        .Enabled(true)
+        .FileName("Orders"))
+    .Grouping(g => g
+        .ContextMenuEnabled(true)
+        .ExpandMode(GridGroupingExpandMode.RowClick))
+    .GroupPanel(p => p
+        .EmptyPanelText("Use the context menu of header columns to group data")
+        .Visible(true))
+         .Pager(p => p
+        .AllowedPageSizes(new int[] { 5, 8, 15, 30 })
+        .ShowInfo(true)
+        .ShowNavigationButtons(true)
+        .ShowPageSizeSelector(true)
+        .Visible(true))
+    .Paging(p => p.PageSize(8))
+    .ColumnChooser(c => c
+        .Enabled(true)
+        .Mode(GridColumnChooserMode.Select))
+    .Columns(columns =>
+     {
+         columns.Add().DataField("id").DataType(GridColumnDataType.Number).Width(50);
+         columns.Add().DataField("name").DataType(GridColumnDataType.String);
+         columns.Add().DataField("status").DataType(GridColumnDataType.Boolean).Width(100);
+         columns.Add().DataField("createAt").DataType(GridColumnDataType.Date);
+         columns.Add().DataField("updateAt").DataType(GridColumnDataType.Date);
+     })
+    .Paging(paging => paging.PageSize(10))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new List<int> { 5, 10, 20 });
+        pager.ShowInfo(true);
+    })
+    .DataSource(d => d.WebApi().Controller("MenusAPI").LoadAction("GetMenus"))
 )
-
-@(Html.DevExtreme().DataGrid()
-    .DataSource(ds => ds
-        .WebApi()
-        .Controller("MenusAPI")
-        .Key("Id")
-        .LoadAction("GetMenus")
-        .InsertAction("InsertOrder")
-        .UpdateAction("UpdateOrder")
-        .DeleteAction("RemoveOrder")
-    )
-)
-
-
-
-
-

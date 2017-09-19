@@ -1,0 +1,279 @@
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 992px) and (max-width: 1200px) { 
+    .slider-pro p.sp-slider-text {
+      font-size: 15px;
+    }
+    .slider-pro h1.sp-caption-title {
+      font-size: 52px;
+    }
+}
+@media only screen and (max-width: 990px) {
+    .featured-project-box{ margin-bottom: 20px; }
+    .our-team{ margin-bottom: 20px;}
+    .single-blog-item{  margin-bottom:20px; }
+}
+@media screen and (min-width:1199px) {
+    .shrink a {
+      font-size: 15px;
+      padding: 20px 10px !important;
+    }
+}
+@media screen and (min-width: 768px){
+    .submenu {
+        position: absolute;
+        display: block;
+        width: 100%;
+        top: 130%;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s all ease 0s;
+        padding: 0px;
+        min-width: 210px;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: 0.5s all ease-in-out 0s;
+        -o-transition: 0.5s all ease-in-out 0s;
+        transition: 0.5s all ease-in-out 0s;
+        transform: scaleY(0);
+        transform-origin: 0 0 0;
+        z-index: 999;
+        border:none;
+        overflow:hidden;
+    } 
+    .navbar-nav li:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+        top: 100%;
+        transform: scaleY(1);
+    }
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) { 
+    .navbar-header {
+      float: none;
+    }
+    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+      margin: 0 auto;
+    }
+    .navbar-brand {
+      display: block;
+      margin: 0 auto;
+      padding: 25px 0;
+      width: 230px;
+        float: none;
+    }
+    .navbar-default .navbar-nav > li > a {
+      padding: 25px 7px;
+    }
+    .header-search-bar {
+      margin-top: 7px;
+    }
+    .navbar-right {
+      float: left;
+      margin-right: 20px;
+    }
+    .testimonial-slides .owl-nav div {
+      left: 5%;
+        top: 94%;
+    }
+    .testimonial-slides .owl-nav div.owl-next {
+        right: 5%;
+    }
+    .bottom-image-preview {
+      bottom: 0;
+      margin-top: -100px;
+      position: relative;
+    }
+    .video-boxed .video-content {
+      padding-top: 19%;
+    }
+    .single-blog-item .blog-prof {
+      top: 37%;
+    }
+    .blog-info {
+      margin-bottom: 40px;
+    }
+    .single-blog-item {
+      margin-bottom: 0;
+    }
+    .blog-content-info {
+      margin-bottom: 20px;
+    }
+    .footer-wid {
+      padding: 40px 0 20px;
+    }
+    .social-icos {
+      padding: 20px 0 30px;
+    }
+    .slider-pro p.sp-slider-text {
+      display: none;
+    }
+    .slider-pro h1.sp-caption-title {
+      font-size: 38px;
+    }
+    .content-block-area {
+      padding: 60px 0;
+    }
+	.boxed-images {
+		margin-top: 50px;
+	}
+	.box-item {
+	  margin-bottom: 40px;
+	}
+}
+@media only screen and (max-width: 550px){
+    .slider-pro p.slider-buttons {
+      display: none;
+    }
+}
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) { 
+    .header-search-bar {
+        display: none;
+    }
+    h2 {
+      font-size: 30px;
+    }
+    /*===================================
+	             Home One Page
+     ===================================
+    */
+    .navbar-nav .open .dropdown-menu {
+        overflow: hidden;
+    }
+    .navbar-default .navbar-nav>li>a {
+        padding: 10px;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover {
+        color: #fff;
+        background-color: rgba(61,83,229,0.9);
+    }
+    .navbar-brand {
+        background-color: transparent;
+        padding: 10px 15px;
+    }
+    .navbar-nav {
+       margin-right: 0px;
+       width: 100%;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #707070;
+        font-size: 18px;
+        background-color: #fff;
+    }
+    .nav>li {
+    	float: none;
+    	width: 100%;
+    }
+    .navbar-default .navbar-toggle {
+         border-color: transparent;
+    }
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+         background-color: transparent;
+    }
+    .our-team .social-icon{ 
+        right: 25px; 
+    }
+    .our-team .team-info{ 
+        bottom: 30px; 
+    }
+    .slider-pro p.sp-slider-text {
+      display: none;
+    }
+    .slider-pro h1.sp-caption-title {
+      font-size: 4vw;
+    }
+    .slider-pro p > a {
+      font-size: 12px;
+      margin: 0 3px;
+    }
+    .who-we-info {
+      margin-bottom: 20px;
+    }
+    .testimonial-slides .owl-nav div {
+      left: 5%;
+        top: 95%;
+    }
+    .testimonial-slides .owl-nav div.owl-next {
+        right: 5%;
+    }
+    .services-boxed-item {
+      margin-bottom: 20px;
+    }
+    .question-boxed {
+      margin-bottom: 20px;
+    }
+    .bottom-image-preview {
+      bottom: 0;
+      margin-top: -100px;
+      position: relative;
+    }
+    .video-boxed .video-content {
+      padding-top: 22%;
+    }
+    .our-team .team-info {
+      bottom: -9px;
+    }
+    .cta-texts-area > h2 {
+      font-size: 25px;
+    }
+    .post-content-area > a > h2 {
+      font-size: 25px;
+    }
+    .post-content-area > h2 {
+      font-size: 25px;
+    }
+    .content-block-area {
+      padding: 40px 0;
+    }
+    .theme-breadcumbs-area {
+      height: 155px;
+    }
+    .footer-copyright-area, .footer-copyright-area .text-right {
+        text-align: center;
+    }
+    .contact-form-area {
+      padding: 40px 0 0;
+    }
+    .single-blog-item .blog-prof {
+      top: 37%;
+    }
+    .blog-info {
+      margin-bottom: 40px;
+    }
+    .single-blog-item {
+      margin-bottom: 0;
+    }
+    .blog-content-info {
+      margin-bottom: 20px;
+    }
+    .footer-wid {
+      padding: 40px 0 20px;
+    }
+    .social-icos {
+      padding: 20px 0 30px;
+    }
+	.sp-horizontal .sp-previous-arrow {
+	  left: 0;
+	}
+	.sp-horizontal .sp-next-arrow {
+	  right: 0;
+	}
+	.boxed-images {
+		margin-top: 50px;
+	}
+	.hero-boxed {
+	  margin-top: 30px;
+	}
+	.box-item {
+	  margin-top: 30px;
+	}
+	.spacer-50 {
+	  height: 0;
+	}
+}
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) { 
+
+}
