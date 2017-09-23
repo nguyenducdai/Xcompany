@@ -1,7 +1,8 @@
-﻿app.directive('ckEditor', function () {
+﻿app.directive('ckeditor', function () {
     return {
         require: '?ngModel',
         link: function (scope, elm, attr, ngModel) {
+            console.log(elm);
             var ck = CKEDITOR.replace(elm[0]);
             if (!ngModel) return;
             ck.on('instanceReady', function () {
@@ -22,3 +23,7 @@
         }
     };
 });
+
+function renderDatatable() {
+    $('#dataTable').DataTable();
+}

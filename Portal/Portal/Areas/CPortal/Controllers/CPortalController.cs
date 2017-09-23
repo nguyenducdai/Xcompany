@@ -13,5 +13,10 @@ namespace Portal.Areas.CPortal.Controllers
         {
             return View();
         }
+
+        public IActionResult CategoryList()
+        {
+            return View();
+        }
     }
 }
