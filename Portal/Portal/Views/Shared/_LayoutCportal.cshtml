@@ -1,17 +1,11 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link href="~/lib/devextreme/css/dx.common.css" rel="stylesheet" />
-        <link href="~/lib/devextreme/css/dx.light.css" rel="stylesheet" />
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/devextreme/js/dx.all.js"></script>
-        <script src="~/lib/devextreme-aspnet-data/js/dx.aspnet.data.js"></script>
-        <script src="~/lib/devextreme/js/dx.aspnet.mvc.js"></script>
     </environment>
 </head>
 <body>
@@ -37,5 +31,13 @@
     <div class="container-fluid">
         @RenderBody()
     </div>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/angular/angular.js"></script>
+        <script src="~/js/applications/app.js"></script>
+        @RenderSection("Scripts", required: false)
+    </environment>
+    
 </body>
 </html>

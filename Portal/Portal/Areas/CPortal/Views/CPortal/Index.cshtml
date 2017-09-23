@@ -1,68 +1,14 @@
-﻿@using DevExtreme.AspNet.Mvc
-@{
+﻿@{
     ViewData["Title"] = "CPortal";
     Layout = "~/Views/Shared/_LayoutCportal.cshtml";
 }
-@(Html.DevExtreme().DataGrid()
-        .ID("id")
-        .FilterRow(filterRow => filterRow
-            .Visible(true)
-            .ApplyFilter(GridApplyFilterMode.Auto)
-        )
-        .SearchPanel(searchPanel => searchPanel
-            .Visible(true)
-            .Width(240)
-            .Placeholder("Search...")
-        )
-        .HeaderFilter(headerFilter => headerFilter.Visible(true))
-        .ShowBorders(true)
-        .Editing(editing =>
-        {
-            editing.Mode(GridEditMode.Row);
-            editing.AllowAdding(true);
-            editing.AllowDeleting(true);
-            editing.AllowUpdating(true);
-        })
-        .Selection(s => s.Mode(SelectionMode.Multiple)
-    )
-    .AllowColumnReordering(true)
-    .AllowColumnResizing(true)
-     .ColumnAutoWidth(true)
-    .ColumnChooser(c => c.Enabled(true))
-    .ColumnFixing(c => c.Enabled(true))
-    .Export(e => e
-        .Enabled(true)
-        .FileName("Orders"))
-    .Grouping(g => g
-        .ContextMenuEnabled(true)
-        .ExpandMode(GridGroupingExpandMode.RowClick))
-    .GroupPanel(p => p
-        .EmptyPanelText("Use the context menu of header columns to group data")
-        .Visible(true))
-         .Pager(p => p
-        .AllowedPageSizes(new int[] { 5, 8, 15, 30 })
-        .ShowInfo(true)
-        .ShowNavigationButtons(true)
-        .ShowPageSizeSelector(true)
-        .Visible(true))
-    .Paging(p => p.PageSize(8))
-    .ColumnChooser(c => c
-        .Enabled(true)
-        .Mode(GridColumnChooserMode.Select))
-    .Columns(columns =>
-     {
-         columns.Add().DataField("id").DataType(GridColumnDataType.Number).Width(50);
-         columns.Add().DataField("name").DataType(GridColumnDataType.String);
-         columns.Add().DataField("status").DataType(GridColumnDataType.Boolean).Width(100);
-         columns.Add().DataField("createAt").DataType(GridColumnDataType.Date);
-         columns.Add().DataField("updateAt").DataType(GridColumnDataType.Date);
-     })
-    .Paging(paging => paging.PageSize(10))
-    .Pager(pager =>
-    {
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new List<int> { 5, 10, 20 });
-        pager.ShowInfo(true);
-    })
-    .DataSource(d => d.WebApi().Controller("MenusAPI").LoadAction("GetMenus"))
-)
+
+@section Scripts{
+   <script src="~/js/applications/menu.contronller.js"></script>
+   <script src="~/lib/ckeditor/ckeditor.js"></script>
+   <script src="~/js/applications/common.js"></script>
+}
+<div ng-controller="MenuController">
+
+            
+</div>
