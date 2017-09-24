@@ -46,9 +46,9 @@ namespace Portal
             {
                 routes.MapRoute(
                  name: "areaRouter",
-                 template: "{area:exists}/{controller=CPortal}/{action=Index}/{id?}"
+                 template: "{area:exists}/{controller=Common}/{action=Index}/{id?}"
                  );
-                
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

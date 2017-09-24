@@ -28,9 +28,10 @@
 	// post -> Add , get->get , put->update . delete-> del
 
 	$scope.delete = function (id) {
-		if (confirm("ban co chac chan muon xoa khong")) {
+		if (confirm("do you want delete ?")) {
 			$http.delete("/api/MenusAPI/"+id).then(function (response) {
-				$scope.LoadData();
+			    $scope.LoadData();
+			    MessageEvent("delete done !", "#messageinfo", "s")
 			}, function (error) {
 				console.log(error);
 			});
@@ -59,7 +60,7 @@
 
 	}
 
-	//load Data
+	//LOAD DATATABLE
 	$scope.LoadData = function () {
 		$.ajax({
 			url: "/api/MenusAPI/",
@@ -69,7 +70,7 @@
 			cache: true,
 			success: function (response) {
 				$scope.DataTable = response;
-				console.log($scope.DataTable);
+				//console.log($scope.DataTable);
 			}
 		});
 	}

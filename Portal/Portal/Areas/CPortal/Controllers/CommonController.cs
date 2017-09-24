@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Portal.Areas.CPortal.Controllers
 {
     [Area("CPortal")]
-    public class CPortalController : Controller
+    public class CommonController : Controller
     {
         public IActionResult Index()
         {
@@ -15,6 +15,15 @@ namespace Portal.Areas.CPortal.Controllers
         }
 
         public IActionResult CategoryList()
+        {
+            return View();
+        }
+
+        public IActionResult PostList()
+        {
+            return View();
+        }
+        public IActionResult PageList()
         {
             return View();
         }
