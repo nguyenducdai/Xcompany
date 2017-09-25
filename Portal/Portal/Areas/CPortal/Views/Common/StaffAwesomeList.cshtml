@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "StaffAwesomeList";
+    Layout = "~/Views/Shared/_LayoutCportal.cshtml";
+}
+@section Scripts{
+    <script src="~/js/applications/staffawesome.controller.js"></script>
+    <script src="~/js/applications/common.js"></script>
+    <script>
+        renderDatatable();
+    </script>
+}
+<div ng-controller="StaffAwesomeController" id="main_content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-right">
+                <button class="btn btn-primary" style="margin-bottom: 10px" type="button" ng-click="showDialog(x.id)">Add New</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="messageinfo" style="display:none"></div>
+        <table id="dataTable" class="display" cellspacing="0">
+            <thead>
+                <tr>
+                    <th width="20" class="text-center">No</th>
+                    <th width="300">Name</th>
+                    <th width="30" class="text-center">Descaption</th>
+                    <th width="200" class="text-center">Facebook</th>
+                    <th width="200" class="text-center">Twitter</th>
+                    <th width="200" class="text-center">GooglePlus</th>
+                    <th width="200" class="text-center">Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in DataTable">
+                    <td width="20" class="text-center">{{($index+1)}}</td>
+                    <td width="300">{{x.name}}</td>
+                    <td width="300">{{x.descaption}}</td>
+                    <td width="300" class="text-center">{{x.facebook}}</td>
+                    <td width="300" class="text-center">{{x.twitter}}</td>
+                    <td width="300" class="text-center">{{x.googleplus}}</td>
+                    <td width="300">{{x.image}}</td>
+                    <td><a ng-click="showDialog(x.id)">Edit</a> <a ng-click="delete(x.id)">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{Tilte}}</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="usr">Name:</label>
+                        <input type="text" class="form-control" ng-model="staffawesome.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Descaption:</label>
+                        <input type="text" class="form-control" ng-model="staffawesome.descaption">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Facebook:</label>
+                        <input type="text" class="form-control" ng-model="staffawesome.facebook">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Twitter:</label>
+                        <input type="text" class="form-control" ng-model="staffawesome.twitter">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Google Plus:</label>
+                        <input type="text" class="form-control" ng-model="staffawesome.googleplus">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Image:</label>
+                        <input type="text" class="form-control" ng-model="staffawesome.image">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save(staffawesome.id)">save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -27,5 +27,9 @@ namespace Portal.Areas.CPortal.Controllers
         {
             return View();
         }
+        public IActionResult StaffAwesomeList()
+        {
+            return View();
+        }
     }
 }
