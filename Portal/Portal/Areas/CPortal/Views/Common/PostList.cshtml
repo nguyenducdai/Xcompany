@@ -7,11 +7,12 @@
     <script src="~/js/applications/post.contronller.js"></script>
     <script src="~/lib/ckeditor/ckeditor.js"></script>
     <script src="~/js/applications/common.js"></script>
+
     <script>
         renderDatatable();
     </script>
 }
-<div ng-controller="PostController" id="main_content">
+<div ng-controller="PostController" id="main_content" ng-init="LoadDataPost()">
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-right">
@@ -27,8 +28,12 @@
             <thead>
                 <tr>
                     <th width="20" class="text-center">No</th>
-                    <th width="300">Menu name</th>
+                    <th width="300">Post name</th>
+                    <th>Category</th>
+                    <th width="300">Alias</th>
+                    <th width="300">HomeFlag</th>
                     <th width="30" class="text-center">Status</th>
+                    <th>ViewCount</th>
                     <th width="200" class="text-center">Create date</th>
                     <th width="200" class="text-center">Update date</th>
                     <th>Action</th>
@@ -38,17 +43,22 @@
                 <tr ng-repeat="x in DataTable">
                     <td width="20" class="text-center">{{($index+1)}}</td>
                     <td width="300">{{x.name}}</td>
+                    <td>{{x.category.name}}</td>
+                    <td>{{x.alias}}</td>
+                    <td width="30" class="text-center"><input type="checkbox" ng-checked="{{x.homeFlag}}" disabled /></td>
                     <td width="30" class="text-center"><input type="checkbox" ng-checked="{{x.status}}" disabled /></td>
+                    <td>{{x.viewCount}}</td>
                     <td width="200" class="text-center">{{x.createAt | date:"dd-MM-yyyy HH:mm:ss" }}</td>
                     <td width="200" class="text-center">{{x.updateAt | date:"dd-MM-yyyy HH:mm:ss" }}</td>
                     <td><a ng-click="showDialog(x.id)">edit</a> <a ng-click="delete(x.id)">delete</a></td>
                 </tr>
+
             </tbody>
         </table>
     </div>
 </div>
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal modal-wide fade custom" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -57,16 +67,72 @@
                 <h4 class="modal-title">{{Tilte}}</h4>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="usr">name:</label>
-                        <input type="text" class="form-control" ng-model="menu.name">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">status :</label>
-                        <input type="checkbox" ng-model="menu.status">
-                    </div>
-                </form>
+                <div class="col-lg-12">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="col-lg-9">
+                            <div class="form-group">
+                                <label for="usr">Post name:</label>
+                                <input type="text" class="form-control" ng-model="Post.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Descaption</label>
+                                <textarea type="text" ng-model="Post.descaption" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">BodyContent</label>
+                                <input type="text" ng-model="Post.BodyContent" ckeditor>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="pwd">Category</label>
+                                <select ng-model="Post.categoryId" class="form-control"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="checkbox" ng-model="Post.status" /> Status
+                                <input type="checkbox" ng-model="Post.homeFlag" /> HomeFlag
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">MetaKeyword</label>
+                                <input ng-model="Post.metaKeyword" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">MetaDescription</label>
+                                <textarea ng-model="Post.metaDescription" class="form-control" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div id="fileuploader">
+                                    <div class="widget-container">
+                                        <div dx-file-uploader="options">
+                                        </div>
+                                        <div class="content">
+                                            <div ng-if="value.length > 0">
+                                                <h4>Selected Files</h4>
+                                            </div>
+                                            <div ng-repeat="val in value">
+                                                <div class="selected-item">
+                                                    Name:
+                                                    <span>{{val.name}}</span><br />
+                                                    Size:
+                                                    <span>{{val.size}}</span>bytes<br />
+                                                    Type:
+                                                    <span>{{val.type}}</span><br />
+                                                    Last Modified Date:
+                                                    <span>{{val.lastModifiedDate}}</span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save(menu.id)">save</button>

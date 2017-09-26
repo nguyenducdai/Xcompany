@@ -2,7 +2,6 @@
     return {
         require: '?ngModel',
         link: function (scope, elm, attr, ngModel) {
-            console.log(elm);
             var ck = CKEDITOR.replace(elm[0]);
             if (!ngModel) return;
             ck.on('instanceReady', function () {
@@ -25,7 +24,18 @@
 });
 
 function renderDatatable() {
-   $('#dataTable').DataTable();
+    $('#dataTable').DataTable({
+        "language": {
+            "lengthMenu": 'Display <select>' +
+            '<option value="20">20</option>' +
+            '<option value="50">50</option>' +
+            '<option value="100">100</option>' +
+            '<option value="200">200</option>' +
+            '<option value="500">500</option>' +
+            '</select> records'
+        },
+        "iDisplayLenght":100,
+    });
 }
 
 function MessageEvent(msg, idisplay, typeError) {
@@ -49,3 +59,8 @@ function MessageEvent(msg, idisplay, typeError) {
     $(idisplay).css({ "display": "block" });
     $(idisplay).html(html);
 }
+
+$(".modal-wide").on("show.bs.modal", function () {
+    var height = $(window).height() - 200;
+    $(this).find(".modal-body").css("max-height", height);
+});

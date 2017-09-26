@@ -1,16 +1,17 @@
 ﻿body {
-    
 }
 /* STYLE NAVBAR*/
 .navbar {
     min-height: 30px !important;
 }
+
 .navbar-nav > li > a {
     padding-top: 5px !important;
     padding-bottom: 5px !important;
     color: #d9d9d9 !important;
     font-size: 15px;
 }
+
 .navbar-inverse {
     background: #10223e;
     background-image: none;
@@ -24,14 +25,38 @@
     border-radius: 0 !important;
 }
 
+
+
+/*CUSTOM MODEL BOOSTRAP*/
 .modal-content {
     box-shadow: 0 !important;
-    border-radius: 0!important;
+    border-radius: 0 !important;
 }
+
 .modal.fade .modal-dialog {
     transform: none !important;
 }
 
+.custom.modal-wide .modal-dialog {
+    width: 80% !important;
+}
+
+.custom .modal-wide .modal-body {
+    overflow-y: auto;
+  
+}
+
+.custom .modal-body {
+    min-height: 600px !important;
+}
+.custom .modal-dialog {
+    height: 100%;
+}
+
+.custom .modal-content {
+    min-height: 100%;
+    border-radius: 0;
+}
 /*STYLE MENU NAV*/
 .nav-header {
     display: block;
@@ -43,6 +68,49 @@
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
     text-transform: uppercase;
 }
+
 .nav-list > li > a {
-    color: #555 !important; 
+    color: #555 !important;
+}
+
+/***/
+.dx-fileuploader-wrapper  {
+    padding:0 !important;
+}
+.content h4 {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.content {
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+.selected-item {
+    margin-bottom: 20px;
+}
+
+#selected-files {
+    display: none;
+}
+
+.options {
+    padding: 20px;
+    background-color: #f5f5f5;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+}
+
+.caption {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.option {
+    margin-top: 10px;
 }

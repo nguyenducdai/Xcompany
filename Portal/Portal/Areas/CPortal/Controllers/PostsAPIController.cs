@@ -24,7 +24,7 @@ namespace Portal.Areas.CPortal.Controllers
         [HttpGet]
         public IEnumerable<Posts> GetPosts()
         {
-            return _context.Posts;
+            return _context.Posts.Include(x=>x.Category);
         }
 
         // GET: api/PostsAPI/5

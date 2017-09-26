@@ -6,10 +6,10 @@ namespace Portal.Data
 {
     public partial class PortalDatabaseContext : DbContext
     {
+        
 
         public PortalDatabaseContext(DbContextOptions<PortalDatabaseContext> options) : base(options)
         {
-
         }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<MenuItems> MenuItems { get; set; }
