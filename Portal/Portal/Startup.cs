@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Portal.Data;
+using AutoMapper;
+using Portal.Areas.CPortal.Models;
 
 namespace Portal
 {
@@ -28,11 +30,16 @@ namespace Portal
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             }); 
             services.AddDbContext<PortalDatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dbConnection")));
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            Mapper.Initialize(cfg => {
+                cfg.CreateMap<Categories, CategoryViewModel>().ReverseMap();
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

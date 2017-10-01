@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Menu type";
+    Layout = "~/Views/Shared/_LayoutCportal.cshtml";
+}
+
+
+@section Scripts{
+    <script src="~/js/applications/menu.contronller.js"></script>
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/js/applications/common.js"></script>
+    <script>
+        //renderDatatable();
+    </script>
+}
+<div ng-controller="MenuController" id="main_content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-right">
+                <button type="button" ng-click="showDialog(x.id)">add menu</button>
+                <button> delete</button>
+                <button> back</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="messageinfo" style="display:none"></div>
+        <table id="dataTable" class="table table-bordered table-striped" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="text-center">No</th>
+                    <th width="300">Menu name</th>
+                    <th width="30" class="text-center">Status</th>
+                    <th width="200" class="text-center">Create date</th>
+                    <th width="200" class="text-center">Update date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in DataTable">
+                    <td width="20" class="text-center">{{($index+1)}}</td>
+                    <td width="300"><a ng-click="showDialog(x.id)">{{x.name}}</a></td>
+                    <td width="30" class="text-center"><input type="checkbox" ng-checked="{{x.status}}" disabled /></td>
+                    <td width="200" class="text-center">{{x.createAt | date:"dd-MM-yyyy HH:mm:ss" }}</td>
+                    <td width="200" class="text-center">{{x.updateAt | date:"dd-MM-yyyy HH:mm:ss" }}</td>
+                    <td><a ng-click="showDialog(x.id)">menu item</a> <a ng-click="delete(x.id)">delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{Tilte}}</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="usr">name:</label>
+                        <input type="text" class="form-control" ng-model="menu.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">status :</label>
+                        <input type="checkbox" ng-model="menu.status">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save(menu.id)">save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <environment include="Development">
-
         <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link href="~/css/font-awesome.min.css" rel="stylesheet" />
@@ -12,7 +11,6 @@
         <link href="~/lib/devextreme/css/dx.common.css" rel="stylesheet" />
         <link href="~/lib/devextreme/css/dx.light.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/siteCportal.css" />
-
     </environment>
 </head>
 <body>
@@ -55,8 +53,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/CPortal/Common/CategoryList">
                             <span class="icon-folder" aria-hidden="true"></span> <span class="j-links-link">Categories</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/CPortal/Common/PageList">
+                            <span class="icon-folder" aria-hidden="true"></span> <span class="j-links-link">Page</span>
                         </a>
                     </li>
                     
@@ -64,7 +68,7 @@
                 <h4 class="nav-header">Structure</h4>
                 <ul class="j-links-group nav nav-list">
                     <li>
-                        <a href="">
+                        <a href="/CPortal/Common/MenuTypeList">
                             <span class="icon-list-view" aria-hidden="true"></span> <span class="j-links-link">Menu(s)</span>
                         </a>
                     </li>
@@ -108,10 +112,12 @@
     </div>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+
         <script src="~/lib/angular/angular.js"></script>
         <script src="~/lib/devextreme/js/dx.all.js"></script>
-        <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
         <script src="~/js/applications/app.js"></script>
 
         @RenderSection("Scripts", required: false)

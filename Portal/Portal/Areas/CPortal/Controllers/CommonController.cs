@@ -23,5 +23,18 @@ namespace Portal.Areas.CPortal.Controllers
         {
             return View();
         }
+        public IActionResult PageList()
+        {
+            return View();
+        }
+
+        public IActionResult MenuTypeList()
+        {
+            return View();
+        }
+        public IActionResult StaffAwesomeList()
+        {
+            return View();
+        }
     }
 }

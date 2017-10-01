@@ -14,6 +14,7 @@ namespace Portal.Infractstructure.Mapping
         {
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<Menus, MenuViewModel>();
+                cfg.CreateMap<Categories, CategoryViewModel>();
             });
         }
     }
